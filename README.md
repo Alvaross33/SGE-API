@@ -5,11 +5,13 @@ github,
 DESDE INTELLIJ
 1. Nuevo proyecto, from version control. pones desde git y pones la url
 2. Tienes que haber logueado una cuenta de github.
-
+3. 
 4. PULL IMPORTANTE
 Arriba a la izquierda debajo del icono de la carpeta aparece un icono de una linea con un circulo en medio,
 al abrirlo te sale la ventana de commit, en el cual aparecen los cambios los cuales tienes que clickear para añadir,
-una vez clickeado abajo pones el nombre del commit
+una vez clickeado abajo pones el nombre del commit, prueba o commit o algo asi y despues darle al boton Commit and Push
+se te abrira una ventana emergente, la cual ves los cambios, y abajo IMPORTANTE aparece la casilla TAGS tienes que darle
+y elegir la branch actual SINO HACES ESTO CAMBIARAS TANTO DESARROLLO COMO MAIN.
 DESDE VISUAL ESTUDIO
 1. Abre terminal y pega esto
 git clone https://github.com/Alvaross33/SGE-API.git
