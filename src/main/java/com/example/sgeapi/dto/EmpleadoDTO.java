@@ -3,7 +3,7 @@ package com.example.sgeapi.dto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import com.example.sgeapi.model.Empleado;
+import com.example.sgeapi.model.Empleado;,
 
 @Data
 @NoArgsConstructor
