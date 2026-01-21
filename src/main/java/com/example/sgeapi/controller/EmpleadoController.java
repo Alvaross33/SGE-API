@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.example.sgeapi.dto.EmpleadoDTO;
 import com.example.sgeapi.service.EmpleadoService;
-import java.util.List;,
+import java.util.List;
 
 @RestController
 @RequestMapping("/taller/empleados")

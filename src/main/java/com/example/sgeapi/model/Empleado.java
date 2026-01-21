@@ -9,7 +9,7 @@ import com.example.sgeapi.dto.EmpleadoDTO;
 @NoArgsConstructor
 @Entity
 @Table(name = "empleados")
-public class Empleado {,
+public class Empleado {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

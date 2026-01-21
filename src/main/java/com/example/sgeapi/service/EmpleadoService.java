@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import com.example.sgeapi.dto.EmpleadoDTO;
 import com.example.sgeapi.model.Empleado;
 import com.example.sgeapi.repository.EmpleadoRepository;
-import java.util.List;,
+import java.util.List;
 
 @Service
 public class EmpleadoService {
