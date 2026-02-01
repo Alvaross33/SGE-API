@@ -1,14 +1,16 @@
 package com.example.sgeapi.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import com.example.sgeapi.dto.EmpleadoDTO;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
-@Table(name = "empleados")
+@Table(name = "empleado")
 public class Empleado {
 
     @Id
@@ -16,32 +18,35 @@ public class Empleado {
     @Column(name = "id_empleado")
     private Integer idEmpleado;
 
-    @Column(length = 100)
+    @Column(name = "nombre", length = 100)
     private String nombre;
 
-    @Column(length = 20)
+    @Column(name = "dni", length = 20)
     private String dni;
 
-    @Column(length = 100)
+    @Column(name = "telefono", length = 100)
     private String telefono;
 
-    @Column(length = 100)
+    @Column(name = "email", length = 100)
     private String email;
 
-    @Column(length = 100)
+    @Column(name = "direccion", length = 200)
     private String direccion;
 
-    @Column(length = 50)
+    @Column(name = "departamento", length = 50)
     private String departamento;
 
-    @Column(length = 50)
+    @Column(name = "rol", length = 50)
     private String rol;
 
-    @Column(length = 20)
+    @Column(name = "nuss", length = 20)
     private String nuss;
 
     @Column(name = "es_aprobador")
     private Boolean esAprobador;
+
+    @Column(name = "id_categoria")
+    private Integer idCategoria;
 
     public Empleado(EmpleadoDTO empleadoDTO) {
         this.idEmpleado = empleadoDTO.getIdEmpleado();
@@ -54,5 +59,6 @@ public class Empleado {
         this.rol = empleadoDTO.getRol();
         this.nuss = empleadoDTO.getNuss();
         this.esAprobador = empleadoDTO.getEsAprobador();
+        this.idCategoria = empleadoDTO.getIdCategoria();
     }
 }

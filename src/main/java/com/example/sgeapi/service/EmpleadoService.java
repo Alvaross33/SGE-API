@@ -17,9 +17,9 @@ public class EmpleadoService {
     private EmpleadoRepository empleadoRepository;
 
     public EmpleadoDTO save(EmpleadoDTO empleadoDTO) {
-        Empleado empleado = fabricaEmpleadoService.createEmpleado(empleadoDTO);
+        Empleado empleado = fabricaEmpleadoService.crearEmpleado(empleadoDTO);
         Empleado empleadoGuardado = empleadoRepository.save(empleado);
-        return fabricaEmpleadoService.createEmpleadoDTO(empleadoGuardado);
+        return fabricaEmpleadoService.crearEmpleadoDTO(empleadoGuardado);
     }
 
     public List<EmpleadoDTO> findAll() {
@@ -29,7 +29,7 @@ public class EmpleadoService {
 
     public EmpleadoDTO findById(Integer id) {
         return empleadoRepository.findById(id)
-                .map(fabricaEmpleadoService::createEmpleadoDTO)
+                .map(fabricaEmpleadoService::crearEmpleadoDTO)
                 .orElse(null);
     }
 

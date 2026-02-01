@@ -9,17 +9,17 @@ import java.util.stream.Collectors;
 @Service
 public class FabricaEmpleadoService {
 
-    public Empleado createEmpleado(EmpleadoDTO empleadoDTO) {
+    public Empleado crearEmpleado(EmpleadoDTO empleadoDTO) {
         return new Empleado(empleadoDTO);
     }
 
-    public EmpleadoDTO createEmpleadoDTO(Empleado empleado) {
+    public EmpleadoDTO crearEmpleadoDTO(Empleado empleado) {
         return new EmpleadoDTO(empleado);
     }
 
     public List<EmpleadoDTO> crearEmpleadosDTO(List<Empleado> listaEmpleados) {
         return listaEmpleados.stream()
-                .map(this::createEmpleadoDTO)
+                .map(this::crearEmpleadoDTO)
                 .collect(Collectors.toList());
     }
 }

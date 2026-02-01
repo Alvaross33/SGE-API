@@ -19,6 +19,7 @@ public class EmpleadoDTO {
     private String rol;
     private String nuss;
     private Boolean esAprobador;
+    private Integer idCategoria;
 
     public EmpleadoDTO(Empleado empleado) {
         this.idEmpleado = empleado.getIdEmpleado();
@@ -31,5 +32,6 @@ public class EmpleadoDTO {
         this.rol = empleado.getRol();
         this.nuss = empleado.getNuss();
         this.esAprobador = empleado.getEsAprobador();
+        this.idCategoria = empleado.getIdCategoria();
     }
 }
