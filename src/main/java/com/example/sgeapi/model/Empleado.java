@@ -1,24 +1,22 @@
 package com.example.sgeapi.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import com.example.sgeapi.dto.EmpleadoDTO;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
-@Table(name = "empleado")
+@Table(name = "EMPLEADO")
 public class Empleado {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_empleado")
-    private Integer idEmpleado;
+    private Integer id;
 
-    @Column(name = "nombre", length = 100)
+    @ManyToOne
+    @JoinColumn(name = "id_categoria", nullable = false)
+    private CategoriaProfesional categoriaProfesional;
+
+    @Column(name = "nombre", nullable = false, length = 100)
     private String nombre;
 
     @Column(name = "dni", length = 20)
@@ -45,11 +43,27 @@ public class Empleado {
     @Column(name = "es_aprobador")
     private Boolean esAprobador;
 
-    @Column(name = "id_categoria")
-    private Integer idCategoria;
+    @OneToMany(mappedBy = "empleado", cascade = CascadeType.ALL)
+    private java.util.List<Nomina> nominas;
+
+    public Empleado() {}
+
+    public Empleado(Integer id, CategoriaProfesional categoriaProfesional, String nombre, String dni, String telefono, String email, String direccion, String departamento, String rol, String nuss, Boolean esAprobador) {
+        this.id = id;
+        this.categoriaProfesional = categoriaProfesional;
+        this.nombre = nombre;
+        this.dni = dni;
+        this.telefono = telefono;
+        this.email = email;
+        this.direccion = direccion;
+        this.departamento = departamento;
+        this.rol = rol;
+        this.nuss = nuss;
+        this.esAprobador = esAprobador;
+    }
 
     public Empleado(EmpleadoDTO empleadoDTO) {
-        this.idEmpleado = empleadoDTO.getIdEmpleado();
+        this.id = empleadoDTO.getIdEmpleado();
         this.nombre = empleadoDTO.getNombre();
         this.dni = empleadoDTO.getDni();
         this.telefono = empleadoDTO.getTelefono();
@@ -59,6 +73,32 @@ public class Empleado {
         this.rol = empleadoDTO.getRol();
         this.nuss = empleadoDTO.getNuss();
         this.esAprobador = empleadoDTO.getEsAprobador();
-        this.idCategoria = empleadoDTO.getIdCategoria();
+        // Note: categoriaProfesional needs to be set separately or fetched
     }
+
+    public Integer getId() { return id; }
+    public void setId(Integer id) { this.id = id; }
+    public CategoriaProfesional getCategoriaProfesional() { return categoriaProfesional; }
+    public void setCategoriaProfesional(CategoriaProfesional categoriaProfesional) { this.categoriaProfesional = categoriaProfesional; }
+    public String getNombre() { return nombre; }
+    public void setNombre(String nombre) { this.nombre = nombre; }
+    public String getDni() { return dni; }
+    public void setDni(String dni) { this.dni = dni; }
+    public String getTelefono() { return telefono; }
+    public void setTelefono(String telefono) { this.telefono = telefono; }
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
+    public String getDireccion() { return direccion; }
+    public void setDireccion(String direccion) { this.direccion = direccion; }
+    public String getDepartamento() { return departamento; }
+    public void setDepartamento(String departamento) { this.departamento = departamento; }
+    public String getRol() { return rol; }
+    public void setRol(String rol) { this.rol = rol; }
+    public String getNuss() { return nuss; }
+    public void setNuss(String nuss) { this.nuss = nuss; }
+    public Boolean getEsAprobador() { return esAprobador; }
+    public void setEsAprobador(Boolean esAprobador) { this.esAprobador = esAprobador; }
+
+    public java.util.List<Nomina> getNominas() { return nominas; }
+    public void setNominas(java.util.List<Nomina> nominas) { this.nominas = nominas; }
 }

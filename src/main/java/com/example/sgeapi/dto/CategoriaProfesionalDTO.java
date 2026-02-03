@@ -1,56 +1,29 @@
 package com.example.sgeapi.dto;
 
+import java.math.BigDecimal;
+
 public class CategoriaProfesionalDTO {
 
     private Integer idCategoriaP;
-    private Integer idEmpleado;
     private String descripcion;
     private String nombreCargo;
-    private Double salarioBruto;
+    private BigDecimal salarioBruto;
 
-    // Constructor vacío (OBLIGATORIO para Spring)
-    public CategoriaProfesionalDTO() {
-    }
+    public CategoriaProfesionalDTO() {}
 
-    // Getters y Setters
-
-    public Integer getIdCategoriaP() {
-        return idCategoriaP;
-    }
-
-    public void setIdCategoriaP(Integer idCategoriaP) {
+    public CategoriaProfesionalDTO(Integer idCategoriaP, String descripcion, String nombreCargo, BigDecimal salarioBruto) {
         this.idCategoriaP = idCategoriaP;
-    }
-
-    public Integer getIdEmpleado() {
-        return idEmpleado;
-    }
-
-    public void setIdEmpleado(Integer idEmpleado) {
-        this.idEmpleado = idEmpleado;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
-    }
-
-    public String getNombreCargo() {
-        return nombreCargo;
-    }
-
-    public void setNombreCargo(String nombreCargo) {
         this.nombreCargo = nombreCargo;
-    }
-
-    public Double getSalarioBruto() {
-        return salarioBruto;
-    }
-
-    public void setSalarioBruto(Double salarioBruto) {
         this.salarioBruto = salarioBruto;
     }
+
+    public Integer getIdCategoriaP() { return idCategoriaP; }
+    public void setIdCategoriaP(Integer idCategoriaP) { this.idCategoriaP = idCategoriaP; }
+    public String getDescripcion() { return descripcion; }
+    public void setDescripcion(String descripcion) { this.descripcion = descripcion; }
+    public String getNombreCargo() { return nombreCargo; }
+    public void setNombreCargo(String nombreCargo) { this.nombreCargo = nombreCargo; }
+    public BigDecimal getSalarioBruto() { return salarioBruto; }
+    public void setSalarioBruto(BigDecimal salarioBruto) { this.salarioBruto = salarioBruto; }
 }

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/taller/categorias-profesionales")
+@RequestMapping("/categorias-profesionales")
 public class CategoriaProfesionalController {
 
     @Autowired

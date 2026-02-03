@@ -14,7 +14,6 @@ public class FabricaCategoriaProfesionalService {
     public CategoriaProfesional createCategoriaProfesional(CategoriaProfesionalDTO dto) {
         CategoriaProfesional categoria = new CategoriaProfesional();
         categoria.setIdCategoriaP(dto.getIdCategoriaP());
-        categoria.setIdEmpleado(dto.getIdEmpleado());
         categoria.setDescripcion(dto.getDescripcion());
         categoria.setNombreCargo(dto.getNombreCargo());
         categoria.setSalarioBruto(dto.getSalarioBruto());
@@ -25,7 +24,6 @@ public class FabricaCategoriaProfesionalService {
     public CategoriaProfesionalDTO createCategoriaProfesionalDTO(CategoriaProfesional entity) {
         CategoriaProfesionalDTO dto = new CategoriaProfesionalDTO();
         dto.setIdCategoriaP(entity.getIdCategoriaP());
-        dto.setIdEmpleado(entity.getIdEmpleado());
         dto.setDescripcion(entity.getDescripcion());
         dto.setNombreCargo(entity.getNombreCargo());
         dto.setSalarioBruto(entity.getSalarioBruto());

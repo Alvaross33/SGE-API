@@ -9,7 +9,7 @@ import com.example.sgeapi.service.EmpleadoService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/taller/empleados")
+@RequestMapping("/empleados")
 public class EmpleadoController {
 
     @Autowired
