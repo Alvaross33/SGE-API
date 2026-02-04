@@ -1,7 +1,13 @@
 package com.example.sgeapi.dto;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 import com.example.sgeapi.model.Empleado;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class EmpleadoDTO {
     private Integer idEmpleado;
     private String nombre;
@@ -14,22 +20,6 @@ public class EmpleadoDTO {
     private String nuss;
     private Boolean esAprobador;
     private Integer idCategoria;
-
-    public EmpleadoDTO() {}
-
-    public EmpleadoDTO(Integer idEmpleado, String nombre, String dni, String telefono, String email, String direccion, String departamento, String rol, String nuss, Boolean esAprobador, Integer idCategoria) {
-        this.idEmpleado = idEmpleado;
-        this.nombre = nombre;
-        this.dni = dni;
-        this.telefono = telefono;
-        this.email = email;
-        this.direccion = direccion;
-        this.departamento = departamento;
-        this.rol = rol;
-        this.nuss = nuss;
-        this.esAprobador = esAprobador;
-        this.idCategoria = idCategoria;
-    }
 
     public EmpleadoDTO(Empleado empleado) {
         this.idEmpleado = empleado.getId();
@@ -46,27 +36,4 @@ public class EmpleadoDTO {
             this.idCategoria = empleado.getCategoriaProfesional().getIdCategoriaP();
         }
     }
-
-    public Integer getIdEmpleado() { return idEmpleado; }
-    public void setIdEmpleado(Integer idEmpleado) { this.idEmpleado = idEmpleado; }
-    public String getNombre() { return nombre; }
-    public void setNombre(String nombre) { this.nombre = nombre; }
-    public String getDni() { return dni; }
-    public void setDni(String dni) { this.dni = dni; }
-    public String getTelefono() { return telefono; }
-    public void setTelefono(String telefono) { this.telefono = telefono; }
-    public String getEmail() { return email; }
-    public void setEmail(String email) { this.email = email; }
-    public String getDireccion() { return direccion; }
-    public void setDireccion(String direccion) { this.direccion = direccion; }
-    public String getDepartamento() { return departamento; }
-    public void setDepartamento(String departamento) { this.departamento = departamento; }
-    public String getRol() { return rol; }
-    public void setRol(String rol) { this.rol = rol; }
-    public String getNuss() { return nuss; }
-    public void setNuss(String nuss) { this.nuss = nuss; }
-    public Boolean getEsAprobador() { return esAprobador; }
-    public void setEsAprobador(Boolean esAprobador) { this.esAprobador = esAprobador; }
-    public Integer getIdCategoria() { return idCategoria; }
-    public void setIdCategoria(Integer idCategoria) { this.idCategoria = idCategoria; }
 }

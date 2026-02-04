@@ -1,7 +1,13 @@
 package com.example.sgeapi.dto;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 import java.math.BigDecimal;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class CategoriaProfesionalDTO {
 
     private Integer idCategoriaP;
@@ -9,21 +15,10 @@ public class CategoriaProfesionalDTO {
     private String nombreCargo;
     private BigDecimal salarioBruto;
 
-    public CategoriaProfesionalDTO() {}
-
-    public CategoriaProfesionalDTO(Integer idCategoriaP, String descripcion, String nombreCargo, BigDecimal salarioBruto) {
-        this.idCategoriaP = idCategoriaP;
-        this.descripcion = descripcion;
-        this.nombreCargo = nombreCargo;
-        this.salarioBruto = salarioBruto;
+    public CategoriaProfesionalDTO(com.example.sgeapi.model.CategoriaProfesional categoria) {
+        this.idCategoriaP = categoria.getIdCategoriaP();
+        this.descripcion = categoria.getDescripcion();
+        this.nombreCargo = categoria.getNombreCargo();
+        this.salarioBruto = categoria.getSalarioBruto();
     }
-
-    public Integer getIdCategoriaP() { return idCategoriaP; }
-    public void setIdCategoriaP(Integer idCategoriaP) { this.idCategoriaP = idCategoriaP; }
-    public String getDescripcion() { return descripcion; }
-    public void setDescripcion(String descripcion) { this.descripcion = descripcion; }
-    public String getNombreCargo() { return nombreCargo; }
-    public void setNombreCargo(String nombreCargo) { this.nombreCargo = nombreCargo; }
-    public BigDecimal getSalarioBruto() { return salarioBruto; }
-    public void setSalarioBruto(BigDecimal salarioBruto) { this.salarioBruto = salarioBruto; }
 }

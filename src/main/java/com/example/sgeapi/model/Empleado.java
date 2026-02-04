@@ -43,9 +43,6 @@ public class Empleado {
     @Column(name = "es_aprobador")
     private Boolean esAprobador;
 
-    @OneToMany(mappedBy = "empleado", cascade = CascadeType.ALL)
-    private java.util.List<Nomina> nominas;
-
     public Empleado() {}
 
     public Empleado(Integer id, CategoriaProfesional categoriaProfesional, String nombre, String dni, String telefono, String email, String direccion, String departamento, String rol, String nuss, Boolean esAprobador) {
@@ -73,7 +70,6 @@ public class Empleado {
         this.rol = empleadoDTO.getRol();
         this.nuss = empleadoDTO.getNuss();
         this.esAprobador = empleadoDTO.getEsAprobador();
-        // Note: categoriaProfesional needs to be set separately or fetched
     }
 
     public Integer getId() { return id; }
@@ -98,7 +94,4 @@ public class Empleado {
     public void setNuss(String nuss) { this.nuss = nuss; }
     public Boolean getEsAprobador() { return esAprobador; }
     public void setEsAprobador(Boolean esAprobador) { this.esAprobador = esAprobador; }
-
-    public java.util.List<Nomina> getNominas() { return nominas; }
-    public void setNominas(java.util.List<Nomina> nominas) { this.nominas = nominas; }
 }

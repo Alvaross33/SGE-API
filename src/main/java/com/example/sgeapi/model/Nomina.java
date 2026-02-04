@@ -56,7 +56,6 @@ public class Nomina {
         this.fechaPago = nominaDTO.getFechaPago();
         this.salarioNeto = nominaDTO.getSalarioNeto();
         this.deducciones = nominaDTO.getDeducciones();
-        // Note: empleado and categoriaProfesional need to be set separately
     }
 
     public Integer getIdNomina() { return idNomina; }
