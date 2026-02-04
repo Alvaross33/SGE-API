@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.example.sgeapi.dto.EmpleadoDTO;
+import com.example.sgeapi.dto.EmpleadoDetalleDTO;
 import com.example.sgeapi.service.EmpleadoService;
 import java.util.List;
 
@@ -15,18 +16,21 @@ public class EmpleadoController {
     @Autowired
     private EmpleadoService empleadoService;
 
+    // 🔹 GET → obtener todos los empleados con todos sus datos
     @GetMapping
     public ResponseEntity<List<EmpleadoDTO>> obtenerEmpleados() {
         return new ResponseEntity<>(empleadoService.findAll(), HttpStatus.OK);
     }
 
+    // 🔹 GET → obtener empleado por ID con categoría y nóminas
     @GetMapping("/{id}")
-    public ResponseEntity<EmpleadoDTO> obtenerEmpleadoPorId(@PathVariable Integer id) {
-        EmpleadoDTO empleadoDTO = empleadoService.findById(id);
-        if (empleadoDTO == null) {
+    public ResponseEntity<EmpleadoDetalleDTO> obtenerEmpleadoPorId(@PathVariable Integer id) {
+        try {
+            EmpleadoDetalleDTO empleadoDetalle = empleadoService.findByIdDetalle(id);
+            return new ResponseEntity<>(empleadoDetalle, HttpStatus.OK);
+        } catch (RuntimeException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<>(empleadoDTO, HttpStatus.OK);
     }
 
     @PostMapping
@@ -38,12 +42,12 @@ public class EmpleadoController {
 
     @PutMapping("/{id}")
     public ResponseEntity<EmpleadoDTO> actualizarEmpleado(@PathVariable Integer id, @RequestBody EmpleadoDTO empleadoDTO) {
-        if (empleadoService.findById(id) == null) {
+        try {
+            EmpleadoDTO empleadoActualizado = empleadoService.update(id, empleadoDTO);
+            return new ResponseEntity<>(empleadoActualizado, HttpStatus.OK);
+        } catch (RuntimeException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        empleadoDTO.setIdEmpleado(id);
-        EmpleadoDTO empleadoActualizado = empleadoService.save(empleadoDTO);
-        return new ResponseEntity<>(empleadoActualizado, HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")

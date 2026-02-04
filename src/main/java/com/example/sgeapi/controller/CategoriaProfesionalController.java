@@ -1,6 +1,7 @@
 package com.example.sgeapi.controller;
 
 import com.example.sgeapi.dto.CategoriaProfesionalDTO;
+import com.example.sgeapi.dto.CategoriaProfesionalDetalleDTO;
 import com.example.sgeapi.service.CategoriaProfesionalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,7 +17,7 @@ public class CategoriaProfesionalController {
     @Autowired
     private CategoriaProfesionalService categoriaProfesionalService;
 
-    // 🔹 GET → obtener todas las categorías profesionales
+    // 🔹 GET → obtener todas las categorías profesionales (sin empleados)
     @GetMapping
     public ResponseEntity<List<CategoriaProfesionalDTO>> obtenerCategorias() {
         return new ResponseEntity<>(
@@ -25,19 +26,16 @@ public class CategoriaProfesionalController {
         );
     }
 
-    // 🔹 GET → obtener una categoría por ID
+    // 🔹 GET → obtener una categoría por ID con empleados asignados
     @GetMapping("/{id}")
-    public ResponseEntity<CategoriaProfesionalDTO> obtenerCategoriaPorId(
+    public ResponseEntity<CategoriaProfesionalDetalleDTO> obtenerCategoriaPorId(
             @PathVariable Integer id) {
-
-        CategoriaProfesionalDTO categoria =
-                categoriaProfesionalService.findById(id);
-
-        if (categoria == null) {
+        try {
+            CategoriaProfesionalDetalleDTO categoria = categoriaProfesionalService.findByIdDetalle(id);
+            return new ResponseEntity<>(categoria, HttpStatus.OK);
+        } catch (RuntimeException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-
-        return new ResponseEntity<>(categoria, HttpStatus.OK);
     }
 
     // 🔹 POST → crear una nueva categoría profesional

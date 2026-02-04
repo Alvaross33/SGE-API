@@ -25,16 +25,28 @@ public class NominaService {
     @Autowired
     private CategoriaProfesionalRepository categoriaProfesionalRepository;
 
+    /**
+     * Obtener todas las nóminas con todos sus campos
+     */
     public List<NominaDTO> findAll() {
         return nominaRepository.findAll().stream()
                 .map(NominaDTO::new)
                 .collect(Collectors.toList());
     }
 
+    /**
+     * Obtener nómina por ID con información del empleado
+     */
+    public com.example.sgeapi.dto.NominaDetalleDTO findByIdDetalle(Integer id) {
+        Nomina nomina = nominaRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Nómina no encontrada con id: " + id));
+        return new com.example.sgeapi.dto.NominaDetalleDTO(nomina);
+    }
+
     public NominaDTO findById(Integer id) {
         return nominaRepository.findById(id)
                 .map(NominaDTO::new)
-                .orElse(null);
+                .orElseThrow(() -> new RuntimeException("Nómina no encontrada con id: " + id));
     }
 
     public NominaDTO save(NominaDTO nominaDTO) {
