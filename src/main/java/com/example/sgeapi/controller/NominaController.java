@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/nominas")
+@CrossOrigin(origins = "http://localhost:5173") /*npm run dev*/
 public class NominaController {
 
     @Autowired
