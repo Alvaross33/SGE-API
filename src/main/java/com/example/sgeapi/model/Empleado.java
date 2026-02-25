@@ -43,9 +43,12 @@ public class Empleado {
     @Column(name = "es_aprobador")
     private Boolean esAprobador;
 
+    @Column(name = "activo")
+    private Boolean activo = true;
+
     public Empleado() {}
 
-    public Empleado(Integer id, CategoriaProfesional categoriaProfesional, String nombre, String dni, String telefono, String email, String direccion, String departamento, String rol, String nuss, Boolean esAprobador) {
+    public Empleado(Integer id, CategoriaProfesional categoriaProfesional, String nombre, String dni, String telefono, String email, String direccion, String departamento, String rol, String nuss, Boolean esAprobador, Boolean activo) {
         this.id = id;
         this.categoriaProfesional = categoriaProfesional;
         this.nombre = nombre;
@@ -57,6 +60,7 @@ public class Empleado {
         this.rol = rol;
         this.nuss = nuss;
         this.esAprobador = esAprobador;
+        this.activo = activo;
     }
 
     public Empleado(EmpleadoDTO empleadoDTO) {
@@ -70,6 +74,7 @@ public class Empleado {
         this.rol = empleadoDTO.getRol();
         this.nuss = empleadoDTO.getNuss();
         this.esAprobador = empleadoDTO.getEsAprobador();
+        this.activo = empleadoDTO.getActivo() != null ? empleadoDTO.getActivo() : true;
     }
 
     public Integer getId() { return id; }
@@ -94,4 +99,6 @@ public class Empleado {
     public void setNuss(String nuss) { this.nuss = nuss; }
     public Boolean getEsAprobador() { return esAprobador; }
     public void setEsAprobador(Boolean esAprobador) { this.esAprobador = esAprobador; }
+    public Boolean getActivo() { return activo; }
+    public void setActivo(Boolean activo) { this.activo = activo; }
 }

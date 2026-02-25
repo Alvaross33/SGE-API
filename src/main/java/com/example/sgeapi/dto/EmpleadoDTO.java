@@ -20,6 +20,7 @@ public class EmpleadoDTO {
     private String nuss;
     private Boolean esAprobador;
     private Integer idCategoria;
+    private Boolean activo;
 
     public EmpleadoDTO(Empleado empleado) {
         this.idEmpleado = empleado.getId();
@@ -32,6 +33,7 @@ public class EmpleadoDTO {
         this.rol = empleado.getRol();
         this.nuss = empleado.getNuss();
         this.esAprobador = empleado.getEsAprobador();
+        this.activo = empleado.getActivo();
         if (empleado.getCategoriaProfesional() != null) {
             this.idCategoria = empleado.getCategoriaProfesional().getIdCategoriaP();
         }
